@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<runscript>
+
+
+  <use aircraft="p51d" initialize="scripts/airborne"/>
+  <run start="0" end="5" dt="0.0166666">
+
+    <!-- 
+	Проводим триммирование аппарата для горизонтального плета  
+	-->
+    <event name="Trims">
+      <condition> sim-time-sec ge 0.0 </condition>
+	  <set name="simulation/do_simple_trim" value="1"/>  	
+	</event>
+
+    <!-- 
+	Отклоняем элероны по максимуму   
+	-->	
+   <event>
+      <condition> sim-time-sec ge 0.5 </condition>
+		<set name="fcs/aileron-cmd-norm" value="1"/> 
+    </event>
+
+    <!-- 
+	Возвращаем элероны в исходное положение   
+	-->	
+		
+	<event>
+      <condition> sim-time-sec ge 2.95 </condition>
+		<set name="fcs/aileron-cmd-norm" value="0"/> 
+    </event>
+
+	
+	
+  </run>
+
+</runscript>

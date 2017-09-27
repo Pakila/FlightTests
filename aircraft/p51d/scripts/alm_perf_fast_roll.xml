@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<runscript>
+
+  <use aircraft="p51d" initialize="scripts/airborne"/>
+  <run start="0" end="10" dt="0.0166666">
+
+     <!-- 
+	Проводим триммирование аппарата для горизонтального плета  
+	-->
+    <event name="Trims">
+      <condition> sim-time-sec ge 0.0 </condition>  
+	  <set name="simulation/do_simple_trim" value="1"/>  	
+	</event>
+
+   <!-- 
+	Отклоняем руль высоты "на себя" 
+	-->
+	<event>
+      <condition> sim-time-sec ge 0.0 </condition>
+		<set name="fcs/elevator-cmd-norm" value="-0.05"/> 
+    </event>
+
+	<!-- 
+	Отклоняем элероны по максимуму
+	-->
+	<event>
+      <condition> sim-time-sec ge 0.5 </condition>
+		<set name="fcs/aileron-cmd-norm" value="1"/>
+    </event>	
+	
+	<!-- 
+	Возвращаем руль высоты в нейтральное положение
+	-->
+	<event>
+      <condition> sim-time-sec ge 0.6 </condition>
+		<set name="fcs/elevator-cmd-norm" value="0"/> 
+    </event>
+	
+	<!-- 
+	Отклоняем руль направления
+	-->	
+	<event>
+      <condition> sim-time-sec ge 1.4 </condition>
+		<set name="fcs/rudder-cmd-norm" value="0.7"/> 
+    </event>
+
+	<!-- 
+	Возвращаем руль направления в нейтральное положение
+	-->		
+	<event>
+      <condition> sim-time-sec ge 1.6 </condition>
+		<set name="fcs/rudder-cmd-norm" value="0"/> 
+    </event>	
+	
+	<!-- 
+	Отклоняем руль высоты "от себя"
+	-->		
+	<event>
+      <condition> sim-time-sec ge 1.65 </condition>
+		<set name="fcs/elevator-cmd-norm" value="0.5"/> 
+    </event>
+
+	<!-- 
+	Возвращаем руль высоты в нейтральное положение
+	-->	
+	<event>
+      <condition> sim-time-sec ge 2.35 </condition>
+		<set name="fcs/elevator-cmd-norm" value="0"/> 
+    </event>
+	
+	<!-- 
+	Отклоняем руль направления в противоположную сторону
+	-->	
+	<event>
+      <condition> sim-time-sec ge 2.6 </condition>
+		<set name="fcs/rudder-cmd-norm" value="-1.0"/> 
+    </event>
+	
+	<!-- 
+	Возвращаем руль направления в нейтральное положение
+	-->	
+	<event>
+      <condition> sim-time-sec ge 2.8 </condition>
+		<set name="fcs/rudder-cmd-norm" value="0"/> 
+    </event>
+	
+    <!-- 
+	Отклоняем руль высоты "на себя" 
+	-->			
+	<event>
+      <condition> sim-time-sec ge 2.75 </condition>
+		<set name="fcs/elevator-cmd-norm" value="-0.4"/> 
+    </event>
+
+
+	<!-- 
+	Возвращаем элероны в нейтральное положение 
+	-->	
+	<event>
+      <condition> sim-time-sec ge 2.95 </condition>
+		<set name="fcs/aileron-cmd-norm" value="0"/> 
+    </event>
+
+	<!-- 
+	Возвращаем руль высоты в нейтральное положение
+	-->
+	<event>
+      <condition> sim-time-sec ge 3.0 </condition>
+		<set name="fcs/elevator-cmd-norm" value="0"/> 
+    </event>
+		
+	
+  </run>
+
+</runscript>

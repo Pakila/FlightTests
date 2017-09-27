@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<initialize name="airborne">
+
+  <!-- 
+ Файл инициализации начального состояния аппарата
+  -->
+  <running>                -1   </running>
+  <altitude unit="FT">  325.0  </altitude>
+  <vc unit="KTS">        210.0  </vc>
+ 
+ <latitude unit="DEG">   42.3769  </latitude>
+ <longitude unit="DEG"> -70.9993  </longitude>
+  
+
+  
+</initialize>
